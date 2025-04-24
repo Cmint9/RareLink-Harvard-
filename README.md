@@ -15,4 +15,4 @@ Visit my website for more content and blog posts on the Harvard Rare Disease Hac
 👉 [yourwebsite.com](https://www.harvard-rarediseases.org/rarelink-2025)
 
 ## 🖼️ Preview
-![Project Screenshot](./images/MeetOurTeam)
+![Project Screenshot](./images/RareLink.png)
