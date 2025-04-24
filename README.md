@@ -16,4 +16,4 @@ Visit my website for more content and blog posts on the Harvard Rare Disease Hac
 
 ## 🖼️ Preview
 ![Project Screenshot](./RareLink.png)
-![Project Screenshot](./MeetOurTeam.png)
+![Project Screenshot](./Meet Our Team.png)
