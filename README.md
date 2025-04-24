@@ -16,4 +16,4 @@ Visit my website for more content and blog posts on the Harvard Rare Disease Hac
 
 ## 📄 Downloadable File
 You can download the resource file here:
-📥 [Download PDF](./files/myfile.pdf)
+📥 [Download PDF](./files/Rare Disease Writeup Memo (1).pdf)
