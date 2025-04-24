@@ -1,0 +1,203 @@
+# H-Rare-Disease-25
+# This is for the HTML:
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gene Selection</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Select a Gene</h1>
+
+    <select id="geneDropdown" class="dropdown">
+      <option value="">-- Select a Gene --</option>
+    </select>
+
+    <button id="nextBtn" class="next-btn">Next</button>
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const genes = ["BRCA1", "BRCA2", "TP53", "EGFR", "PTEN", "KRAS", "BRAF", "MYC", "ALK", "NF1"];
+      const dropdown = document.getElementById("geneDropdown");
+
+      genes.forEach(gene => {
+        const option = document.createElement("option");
+        option.value = gene;
+        option.textContent = gene;
+        dropdown.appendChild(option);
+      });
+
+      document.getElementById("nextBtn").addEventListener("click", function () {
+        const selectedGene = dropdown.value;
+        if (selectedGene) {
+          window.location.href = `variant.html?gene=${encodeURIComponent(selectedGene)}`;
+        } else {
+          alert("Please select a gene.");
+        }
+      });
+    });
+  </script>
+</body>
+</html>
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Variant Selection</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Variant Selection</h1>
+    <p id="selected-gen"></p>
+
+    <select id="variantDropdown1" class="dropdown">
+      <option value="">-- Select Variant 1 --</option>
+    </select>
+
+    <select id="variantDropdown2" class="dropdown">
+      <option value="">-- Select Variant 2(Optional) --</option>
+    </select>
+
+    <button id="submitBtn" class="next-btn">Submit</button>
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const urlParams = new URLSearchParams(window.location.search);
+      const gene = urlParams.get('gene');
+      document.getElementById('selected-gene').textContent = gene ? `Selected Gene: ${gene}` : 'No gene selected.';
+
+      const variants = Array.from({ length: 100 }, (_, i) => `Variant_${i + 1}`);
+      const dropdown1 = document.getElementById("variantDropdown1");
+      const dropdown2 = document.getElementById("variantDropdown2");
+
+      variants.forEach(variant => {
+        const option1 = document.createElement("option");
+        option1.value = variant;
+        option1.textContent = variant;
+        dropdown1.appendChild(option1);
+
+        const option2 = document.createElement("option");
+        option2.value = variant;
+        option2.textContent = variant;
+        dropdown2.appendChild(option2);
+      });
+
+      document.getElementById("submitBtn").addEventListener("click", function () {
+        const selectedVariant1 = dropdown1.value;
+        const selectedVariant2 = dropdown2.value;
+
+        if (selectedVariant1 && selectedVariant2) {
+          window.location.href = `report.html?gene=${encodeURIComponent(gene)}&variant1=${encodeURIComponent(selectedVariant1)}&variant2=${encodeURIComponent(selectedVariant2)}`;
+        } else {
+          alert("Please select two variants.");
+        }
+      });
+    });
+  </script>
+</body>
+</html>
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Report</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Report</h1>
+    <p id="report-text"></p>
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const urlParams = new URLSearchParams(window.location.search);
+      const gene = urlParams.get('gene');
+      const variant1 = urlParams.get('variant1');
+      const variant2 = urlParams.get('variant2');
+
+      const diseaseMap = {
+        "BRCA1": "Breast Cancer",
+        "BRCA2": "Ovarian Cancer",
+        "TP53": "Li-Fraumeni Syndrome",
+        "EGFR": "Lung Cancer",
+        "PTEN": "Cowden Syndrome",
+        "KRAS": "Colorectal Cancer",
+        "BRAF": "Melanoma",
+        "MYC": "Lymphoma",
+        "ALK": "Lung Cancer",
+        "NF1": "Neurofibromatosis"
+      };
+
+      const disease = diseaseMap[gene] || "Unknown Disease";
+
+      document.getElementById('report-text').textContent = `Selected Gene: ${gene}
+      Selected Variants: ${variant1}, ${variant2}
+      Possible Associated Disease: ${disease}`;
+    });
+  </script>
+</body>
+</html>
+
+# This is for CSS:
+body {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  margin: 40px;
+  background-color: #f5f5f5;
+}
+
+.container {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  width: 50%;
+  margin: auto;
+}
+
+h1 {
+  color: #333;
+}
+
+.dropdown {
+  width: 80%;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.next-btn {
+  padding: 10px 20px;
+  margin-top: 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.next-btn:hover {
+  background-color: #0056b3;
+}
+
+
+
