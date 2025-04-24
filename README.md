@@ -14,6 +14,5 @@ Check out my channel for tutorials and videos:
 Visit my website for more content and blog posts on the Harvard Rare Disease Hackathon 2025:
 👉 [yourwebsite.com](https://www.harvard-rarediseases.org/rarelink-2025)
 
-## 📄 Downloadable File
-You can download the resource file here:
-📥 [Download PDF](Rare Disease Writeup Memo (1).pdf)
+## 🖼️ Preview
+![Project Screenshot](./images/MeetOurTeam.png)
